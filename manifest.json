@@ -1,0 +1,16 @@
+{
+  "name": "Promotion du Maroc",
+  "short_name": "Promotions MA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f8f6",
+  "theme_color": "#0d4738",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

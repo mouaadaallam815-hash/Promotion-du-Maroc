@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d4738"><meta name="description" content="Promotion du Maroc — العروض والأسعار في المغرب">
+<link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="logo.png">
+<title>Promotion du Maroc</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="icon.svg" alt=""><div><strong>Promotion du Maroc</strong><small>العروض والأسعار في المغرب</small></div></div>
+  <button id="langBtn" class="outline">Français</button>
+</header>
+<main>
+  <section class="hero"><div><span class="eyebrow" data-ar="دليلك للتوفير" data-fr="Votre guide d’économies">دليلك للتوفير</span><h1 data-ar="اكتشف أفضل العروض في المغرب" data-fr="Découvrez les meilleures offres au Maroc">اكتشف أفضل العروض في المغرب</h1><p data-ar="الأسعار والعروض في مكان واحد، مع تحديث تاريخ المعلومات." data-fr="Prix et promotions au même endroit, avec la date de mise à jour.">الأسعار والعروض في مكان واحد، مع تحديث تاريخ المعلومات.</p></div><div class="hero-mark">٪</div></section>
+  <section class="searchrow"><input id="search" placeholder="ابحث عن عرض أو منتج..." aria-label="بحث"><select id="city" aria-label="المدينة"><option value="">كل المدن</option><option>الدار البيضاء</option><option>الرباط</option><option>مراكش</option><option>بني ملال</option><option>طنجة</option><option>فاس</option></select></section>
+  <nav id="tabs" class="tabs">
+    <button class="tab active" data-category="all">الكل</button><button class="tab" data-category="markets">الأسواق الكبرى</button><button class="tab" data-category="fuel">المحروقات</button><button class="tab" data-category="telecom">الاتصالات</button><button class="tab" data-category="realestate">العقار</button>
+  </nav>
+  <section id="fuelPanel" class="fuel-panel hidden">
+    <div class="section-heading"><div><h2>أسعار المحروقات</h2><p>تختلف الأسعار حسب الشركة والمحطة والمدينة.</p></div><span class="pill">يتطلب تحديثاً موثوقاً</span></div>
+    <div class="fuel-grid">
+      <article class="fuel-card"><span>⛽</span><h3>البنزين — للتر</h3><div class="price" id="petrolPrice">غير متوفر</div><small id="petrolDate">لم تتم إضافة سعر موثق بعد</small></article>
+      <article class="fuel-card"><span>🚚</span><h3>الغازوال — للتر</h3><div class="price" id="dieselPrice">غير متوفر</div><small id="dieselDate">لم تتم إضافة سعر موثق بعد</small></article>
+    </div>
+    <p class="notice">لن نعرض أرقاماً تقديرية على أنها أسعار حقيقية. أضف السعر وتاريخ التحقق من لوحة الإدارة.</p>
+  </section>
+  <section><div class="section-heading"><div><h2 id="listTitle">أحدث العروض</h2><p id="resultCount">عروض تجريبية لتوضيح شكل التطبيق</p></div><button id="adminOpen" class="admin-link">لوحة الإدارة</button></div><div id="cards" class="cards"></div><div id="empty" class="empty hidden">لا توجد نتائج مطابقة. جرّب كلمة أخرى.</div></section>
+  <section class="disclaimer"><strong>ملاحظة:</strong> هذه نسخة أولية. العروض المعروضة أمثلة توضيحية وليست عروضاً تجارية مؤكدة. يجب التحقق من الأسعار والصلاحية قبل النشر.</section>
+</main>
+<footer>© <span id="year"></span> Promotion du Maroc <span>•</span> <span>العروض داخل التطبيق</span></footer>
+<dialog id="detailDialog"><button class="close" data-close>×</button><div id="detailContent"></div></dialog>
+<dialog id="adminDialog"><button class="close" data-close>×</button><h2>لوحة الإدارة</h2><p class="muted">هذه اللوحة محلية على هذا الجهاز فقط. لا تستخدمها لنشر بيانات سرية؛ يلزم خادم وقاعدة بيانات لتعدد المستخدمين.</p>
+<form id="offerForm">
+<label>عنوان العرض<input name="title" required maxlength="100"></label>
+<label>القسم<select name="category" required><option value="markets">الأسواق الكبرى</option><option value="telecom">الاتصالات</option><option value="realestate">العقار</option></select></label>
+<label>المتجر / الشركة<input name="merchant" required maxlength="80"></label>
+<label>السعر (اختياري)<input name="price" placeholder="مثال: 99 درهم"></label>
+<label>المدينة<input name="city" placeholder="كل المدن أو اسم المدينة"></label>
+<label>رابط صورة (اختياري)<input name="image" type="url" placeholder="https://..."></label>
+<label>التفاصيل<textarea name="description" rows="3" required></textarea></label>
+<label>تاريخ انتهاء العرض (اختياري)<input name="expires" type="date"></label>
+<button class="primary" type="submit">إضافة العرض</button>
+</form>
+<hr><h3>تحديث أسعار المحروقات</h3><form id="fuelForm" class="fuel-form">
+<label>البنزين (درهم/لتر)<input name="petrol" inputmode="decimal" placeholder="مثال: 14.00"></label><label>الغازوال (درهم/لتر)<input name="diesel" inputmode="decimal" placeholder="مثال: 12.00"></label><label>المصدر / المحطة<input name="source" placeholder="اسم المصدر أو المحطة"></label><label>تاريخ التحقق<input name="checked" type="date"></label><button class="primary" type="submit">حفظ الأسعار</button></form>
+<div class="admin-actions"><button id="exportBtn" class="outline">تصدير نسخة JSON</button><label class="import-label">استيراد JSON<input id="importFile" type="file" accept="application/json"></label><button id="resetBtn" class="danger">حذف البيانات المحلية</button></div>
+</dialog>
+<script src="app.js"></script>
+</body></html>
